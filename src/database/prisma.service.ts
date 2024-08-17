@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { PrismaClient, UserModel } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { inject, injectable } from "inversify";
 import { ILogger } from "../logger/logger.interface";
 import { TYPES } from "../types.js";
