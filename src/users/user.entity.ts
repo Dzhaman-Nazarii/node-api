@@ -19,8 +19,8 @@ class User {
 		return this._password;
 	}
 
-	public async setPassword(pass: string) {
-		this._password = await bcryptjs.hash(pass, 10);
+	public async setPassword(pass: string, salt: number) {
+		this._password = await bcryptjs.hash(pass, salt);
 	}
 }
 
