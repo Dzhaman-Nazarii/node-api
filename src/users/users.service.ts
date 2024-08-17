@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { IUserService } from "./users.service.interface";
 import { UserRegisterDto } from "./dto/user-register.dto";
@@ -18,7 +19,6 @@ class UserService implements IUserService {
 	}: UserRegisterDto): Promise<User | null> {
 		const newUser = new User(email, name);
 		const salt = this.configService.get("SALT");
-		console.log(salt);
 		await newUser.setPassword(password, Number(salt));
 		return null;
 	}

@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { Container, ContainerModule, interfaces } from "inversify";
 import { App } from "./app.js";
 import { ExeptionFilter } from "./errros/exeption.filter.js";
@@ -11,20 +12,18 @@ import { IUserService } from "./users/users.service.interface.js";
 import { UserService } from "./users/users.service.js";
 import { IConfigService } from "./config/config.service.interface.js";
 import { ConfigService } from "./config/config.service.js";
+import { PrismaService } from "./database/prisma.service.js";
 
 const appBindings = new ContainerModule((bind: interfaces.Bind) => {
-	bind<ILogger>(TYPES.ILogger)
-		.to(LoggerService)
-		.inSingletonScope();
+	bind<ILogger>(TYPES.ILogger).to(LoggerService).inSingletonScope();
 	bind<IExeptionFilter>(TYPES.ExeptionFilter)
 		.to(ExeptionFilter)
 		.inSingletonScope();
 	bind<IUserController>(TYPES.UserController)
 		.to(UserController)
 		.inSingletonScope();
-	bind<IUserService>(TYPES.UserService)
-		.to(UserService)
-		.inSingletonScope();
+	bind<IUserService>(TYPES.UserService).to(UserService).inSingletonScope();
+	bind<PrismaService>(TYPES.PrismaService).to(PrismaService).inSingletonScope();
 	bind<IConfigService>(TYPES.ConfigService)
 		.to(ConfigService)
 		.inSingletonScope();

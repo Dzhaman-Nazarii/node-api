@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { config, DotenvConfigOutput, DotenvParseOutput } from "dotenv";
 import { IConfigService } from "./config.service.interface";
 import { inject, injectable } from "inversify";

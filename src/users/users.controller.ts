@@ -1,14 +1,13 @@
+import "reflect-metadata";
 import { NextFunction, Request, Response } from "express";
 import { BaseController } from "../common/base.controller.js";
 import { HTTPError } from "../errros/http-error.class.js";
 import { inject, injectable } from "inversify";
 import { TYPES } from "../types.js";
 import { ILogger } from "../logger/logger.interface.js";
-import "reflect-metadata";
 import { IUserController } from "./users.controller.interface.js";
 import { UserLoginDto } from "./dto/user-login.dto.js";
 import { UserRegisterDto } from "./dto/user-register.dto.js";
-import { User } from "./user.entity.js";
 import { IUserService } from "./users.service.interface.js";
 import { ValidateMiddleware } from "../common/validate.middleware.js";
 
@@ -47,7 +46,6 @@ class UserController extends BaseController implements IUserController {
 		res: Response,
 		next: NextFunction
 	) {
-		console.log(req.body);
 		next(new HTTPError(401, "Unauthorized", "login"));
 	}
 }
