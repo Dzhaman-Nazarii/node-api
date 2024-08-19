@@ -42,6 +42,10 @@ class UserService implements IUserService {
 		);
 		return newUser.comparePasssword(password);
 	}
+
+	async getUserInfo(email: string): Promise<UserModel | null> {
+		return this.usersRepository.find(email);
+	}
 }
 
 export { UserService };

@@ -9,6 +9,7 @@ import bodyParser from "body-parser";
 import { IConfigService } from "./config/config.service.interface.js";
 import { IExeptionFilter } from "./errros/exeption.filter.interface.js";
 import { PrismaService } from "./database/prisma.service.js";
+import { AuthMiddleware } from "./common/auth.middleware.js";
 
 @injectable()
 class App {
@@ -29,6 +30,8 @@ class App {
 
 	useMiddleware(): void {
 		this.app.use(bodyParser.json());
+		const athMiddleware = new AuthMiddleware(this.configService.get("SECRET"));
+		this.app.use(athMiddleware.execute.bind(athMiddleware))
 	}
 
 	useRoutes(): void {
