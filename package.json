@@ -1,5 +1,5 @@
 {
-	"name": "dashboard-api",
+	"name": "node-api",
 	"version": "1.0.0",
 	"description": "API for project",
 	"main": "index.js",
